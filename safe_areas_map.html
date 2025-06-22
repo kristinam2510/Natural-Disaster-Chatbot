@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Safe Areas Map</title>
+    <style>
+        #map { height: 100vh; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Safe Areas Nearby</h1>
+    <div id="map"></div>
+    
+    <script>
+        function initMap() {
+            // Create a map centered at a default location
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 10
+            });
+
+            // Add markers for safe areas
+            const safeAreas = [
+                { lat: -34.397, lng: 150.644, title: 'Safe Area 1' },
+                { lat: -34.500, lng: 150.700, title: 'Safe Area 2' }
+            ];
+
+            safeAreas.forEach(area => {
+                new google.maps.Marker({
+                    position: { lat: area.lat, lng: area.lng },
+                    map: map,
+                    title: area.title
+                });
+            });
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
